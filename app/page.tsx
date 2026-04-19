@@ -35,7 +35,7 @@ export default function Home() {
   ];
 
   const galleryImages = [
-    { src: "/Rahma Community/IMG_5917.jpg", alt: "Community members engaging in activities" },
+    { src: "/Rahma Community/1.jpg", alt: "Community members engaging in activities" },
     { src: "/Rahma Community/IMG_5918.jpg", alt: "Educational workshop session" },
     { src: "/Rahma Community/IMG_5919.jpg", alt: "Inclusive social event" },
     { src: "/Rahma Community/IMG_5920.jpg", alt: "Family support gathering" },
@@ -75,7 +75,7 @@ export default function Home() {
         <section className="relative h-[85vh] flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/Rahma Community/IMG_5916.jpg"
+              src="/Rahma Community/IMG_5918.jpg"
               alt="Rahma Community Center Hero"
               fill
               className="object-cover brightness-[0.4] scale-105"
@@ -134,7 +134,7 @@ export default function Home() {
               </div>
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
                 <Image
-                  src="/Rahma Community/1.jpg"
+                  src="/Rahma Community/2.jpg"
                   alt="About Rahma Community"
                   fill
                   className="object-cover"
@@ -245,19 +245,16 @@ export default function Home() {
               <ul className="space-y-4 text-sm font-medium">
                 <li className="flex items-start gap-3">
                   <span className="text-blue-400 italic">Address:</span>
-                  <span>Rahma Community Center <br />(Your Physical Address Here)</span>
+                  <span>259 Roxbury St, Roxbury, MA 02119</span>
                 </li>
-                <li>Email: info@rahmacenter.org</li>
-                <li>Phone: (123) 456-7890</li>
+                <li>Email: rahma@rahmainclusivecenter.org</li>
+                <li>Phone: (617) 888-5514</li>
               </ul>
             </div>
           </div>
           <div className="pt-12 border-t border-stone-800 flex flex-col md:row justify-between items-center gap-6 text-xs uppercase tracking-widest font-bold">
-            <p>&copy; {new Date().getFullYear()} Rahma Community Center. All rights reserved.</p>
-            <div className="flex gap-8">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
+            <p>&copy; {new Date().getFullYear()} Rahma Community Center.</p>
+            <p className="tex-center">All rights reserved.</p>
           </div>
         </div>
       </footer>
