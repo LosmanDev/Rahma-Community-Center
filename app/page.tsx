@@ -41,10 +41,11 @@ export default function Home() {
     { src: "/Rahma Community/IMG_5920.jpg", alt: "Family support gathering" },
     { src: "/Rahma Community/IMG_5921.jpg", alt: "Community integration activity" },
     { src: "/Rahma Community/IMG_5922.jpg", alt: "Special needs support session" },
-    { src: "/Rahma Community/IMG_5923.jpg", alt: "Inclusive community program" },
-    { src: "/Rahma Community/IMG_5924.jpg", alt: "Social skills development group" },
     { src: "/Rahma Community/IMG_5925.jpg", alt: "Community outreach event" },
     { src: "/Rahma Community/IMG_5926.jpg", alt: "Special needs advocacy workshop" },
+    { src: "/Rahma Community/IMG_5923.jpg", alt: "Inclusive community program" },
+    { src: "/Rahma Community/IMG_5924.jpg", alt: "Social skills development group" }
+,
   ];
 
   return (
