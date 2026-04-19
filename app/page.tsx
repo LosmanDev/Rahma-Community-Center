@@ -1,0 +1,266 @@
+import Image from "next/image";
+
+export default function Home() {
+  const programs = [
+    {
+      title: "Special Needs Support",
+      description: "Culturally competent support services tailored to individuals with developmental or physical disabilities.",
+      icon: "🤝",
+    },
+    {
+      title: "Family Resource Navigation",
+      description: "Assisting families in navigating complex healthcare, education, and government assistance systems.",
+      icon: "🗺️",
+    },
+    {
+      title: "Inclusive Education",
+      description: "Educational workshops and programming designed for individuals with special needs and their families.",
+      icon: "📚",
+    },
+    {
+      title: "Community Integration",
+      description: "Social and recreational activities that promote inclusion, skill development, and social connections.",
+      icon: "🌍",
+    },
+    {
+      title: "Caregiver Support",
+      description: "Mental health resources, support groups, and respite care referrals for families and caregivers.",
+      icon: "❤️",
+    },
+    {
+      title: "Advocacy & Referrals",
+      description: "Connecting marginalized families with the essential resources and networks they need to thrive.",
+      icon: "📢",
+    },
+  ];
+
+  const galleryImages = [
+    { src: "/Rahma Community/IMG_5917.jpg", alt: "Community members engaging in activities" },
+    { src: "/Rahma Community/IMG_5918.jpg", alt: "Educational workshop session" },
+    { src: "/Rahma Community/IMG_5919.jpg", alt: "Inclusive social event" },
+    { src: "/Rahma Community/IMG_5920.jpg", alt: "Family support gathering" },
+    { src: "/Rahma Community/IMG_5921.jpg", alt: "Community integration activity" },
+    { src: "/Rahma Community/IMG_5922.jpg", alt: "Special needs support session" },
+    { src: "/Rahma Community/IMG_5923.jpg", alt: "Inclusive community program" },
+    { src: "/Rahma Community/IMG_5924.jpg", alt: "Social skills development group" },
+    { src: "/Rahma Community/IMG_5925.jpg", alt: "Community outreach event" },
+    { src: "/Rahma Community/IMG_5926.jpg", alt: "Special needs advocacy workshop" },
+  ];
+
+  return (
+    <div className="flex flex-col min-h-screen bg-stone-50 text-stone-900 font-sans selection:bg-amber-200 selection:text-stone-900">
+      {/* Header/Navbar */}
+      <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-stone-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-bold tracking-tight text-blue-900">RAHMA</span>
+            <span className="text-sm font-medium text-stone-500 uppercase tracking-widest hidden sm:block">Community Center</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="#about" className="text-sm font-medium hover:text-blue-600 transition-colors">About</a>
+            <a href="#programs" className="text-sm font-medium hover:text-blue-600 transition-colors">Programs</a>
+            <a href="#gallery" className="text-sm font-medium hover:text-blue-600 transition-colors">Gallery</a>
+            <a href="#contact" className="px-5 py-2.5 bg-blue-600 text-white rounded-full text-sm font-semibold hover:bg-blue-700 transition-shadow shadow-sm hover:shadow-md">Get Involved</a>
+          </nav>
+          <button className="md:hidden p-2 text-stone-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="relative h-[85vh] flex items-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/Rahma Community/IMG_5916.jpg"
+              alt="Rahma Community Center Hero"
+              fill
+              className="object-cover brightness-[0.4] scale-105"
+              priority
+            />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <div className="max-w-3xl space-y-8">
+              <span className="inline-block px-4 py-1.5 bg-amber-500/90 text-amber-950 text-xs font-bold uppercase tracking-widest rounded-full">
+                Special Needs & Inclusive Initiative
+              </span>
+              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight">
+                Empowering Families, <br />
+                <span className="text-blue-400">Building Inclusion.</span>
+              </h1>
+              <p className="text-lg md:text-xl text-stone-200 leading-relaxed max-w-2xl">
+                We are committed to building a community where all individuals, regardless of ability or background, have the opportunity to thrive through culturally competent support and resources.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#programs" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-center transition-all shadow-lg shadow-blue-900/20 active:scale-95">
+                  Explore Our Programs
+                </a>
+                <a href="#about" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/30 rounded-xl font-bold text-center transition-all active:scale-95">
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About/Statement of Need */}
+        <section id="about" className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-blue-900 leading-tight">
+                  Bridging the Gap for Underserved Communities
+                </h2>
+                <div className="w-20 h-1.5 bg-amber-500 rounded-full"></div>
+                <p className="text-lg text-stone-600 leading-relaxed">
+                  Many families in marginalized communities face significant barriers in accessing disability services, including language barriers, lack of awareness, and financial constraints.
+                </p>
+                <p className="text-lg text-stone-600 leading-relaxed">
+                  Located within Rahma Community Center, our program serves as a <strong>trusted community hub</strong> connecting families with the resources, services, and support networks necessary to improve their quality of life.
+                </p>
+                <div className="grid grid-cols-2 gap-6 pt-4">
+                  <div className="p-4 bg-stone-50 rounded-2xl border border-stone-100">
+                    <span className="block text-3xl font-bold text-blue-600">200+</span>
+                    <span className="text-sm font-medium text-stone-500">Families Served Annually</span>
+                  </div>
+                  <div className="p-4 bg-stone-50 rounded-2xl border border-stone-100">
+                    <span className="block text-3xl font-bold text-blue-600">Multi</span>
+                    <span className="text-sm font-medium text-stone-500">lingual Support Services</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                <Image
+                  src="/Rahma Community/1.jpg"
+                  alt="About Rahma Community"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Programs Grid */}
+        <section id="programs" className="py-24 bg-stone-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Our Impact</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-stone-900">Programs Designed for You</h2>
+              <p className="text-stone-500 text-lg">We provide a comprehensive range of services designed to empower individuals with special needs and their caregivers.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {programs.map((program, idx) => (
+                <div key={idx} className="group p-8 bg-white rounded-3xl border border-stone-200 hover:border-blue-200 transition-all hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1">
+                  <div className="w-14 h-14 bg-blue-50 text-3xl flex items-center justify-center rounded-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    {program.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-stone-900 mb-3 group-hover:text-blue-700 transition-colors">{program.title}</h3>
+                  <p className="text-stone-600 leading-relaxed">{program.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Community Gallery */}
+        <section id="gallery" className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold text-stone-900 mb-12">Our Community in Action</h2>
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+              {galleryImages.map((img, idx) => (
+                <div key={idx} className="break-inside-avoid relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section id="contact" className="py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative bg-blue-900 rounded-[3rem] overflow-hidden p-12 md:p-24 text-center text-white">
+              <div className="absolute inset-0 opacity-20">
+                <Image
+                  src="/Rahma Community/2.jpg"
+                  alt="Call to action background"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+                <h2 className="text-4xl md:text-6xl font-bold leading-tight">Ready to Make a Difference?</h2>
+                <p className="text-xl text-blue-100">
+                  Whether you are seeking support or looking to contribute, we welcome you to join our inclusive community.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button className="px-10 py-5 bg-amber-500 hover:bg-amber-600 text-amber-950 font-black rounded-2xl transition-all shadow-xl shadow-amber-950/20">
+                    Get Support Now
+                  </button>
+                  <button className="px-10 py-5 bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md font-bold rounded-2xl transition-all">
+                    Partner With Us
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-stone-900 text-stone-400 py-16 border-t border-stone-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div className="col-span-2 space-y-6">
+              <div className="flex items-center gap-2 text-white">
+                <span className="text-2xl font-bold tracking-tight">RAHMA</span>
+                <span className="text-xs font-medium uppercase tracking-[0.2em] opacity-60">Community Center</span>
+              </div>
+              <p className="max-w-sm leading-relaxed text-sm">
+                A community-based nonprofit organization committed to supporting underserved families through educational programs, social services, and community engagement initiatives.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-xs">Navigation</h4>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Home</a></li>
+                <li><a href="#about" className="hover:text-blue-400 transition-colors">About Us</a></li>
+                <li><a href="#programs" className="hover:text-blue-400 transition-colors">Our Programs</a></li>
+                <li><a href="#gallery" className="hover:text-blue-400 transition-colors">Gallery</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-xs">Contact</h4>
+              <ul className="space-y-4 text-sm font-medium">
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-400 italic">Address:</span>
+                  <span>Rahma Community Center <br />(Your Physical Address Here)</span>
+                </li>
+                <li>Email: info@rahmacenter.org</li>
+                <li>Phone: (123) 456-7890</li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-12 border-t border-stone-800 flex flex-col md:row justify-between items-center gap-6 text-xs uppercase tracking-widest font-bold">
+            <p>&copy; {new Date().getFullYear()} Rahma Community Center. All rights reserved.</p>
+            <div className="flex gap-8">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
