@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const programs = [
     {
       title: "Special Needs Support",
@@ -63,12 +68,58 @@ export default function Home() {
             <a href="#gallery" className="text-sm font-medium hover:text-blue-600 transition-colors">Gallery</a>
             <a href="#contact" className="px-5 py-2.5 bg-blue-600 text-white rounded-full text-sm font-semibold hover:bg-blue-700 transition-shadow shadow-sm hover:shadow-md">Get Involved</a>
           </nav>
-          <button className="md:hidden p-2 text-stone-600">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
+          <button 
+            className="md:hidden p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
           </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-stone-200 shadow-xl animate-in slide-in-from-top duration-300">
+            <nav className="flex flex-col p-4 gap-2">
+              <a 
+                href="#about" 
+                className="p-4 text-lg font-semibold text-stone-800 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </a>
+              <a 
+                href="#programs" 
+                className="p-4 text-lg font-semibold text-stone-800 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Programs
+              </a>
+              <a 
+                href="#gallery" 
+                className="p-4 text-lg font-semibold text-stone-800 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Gallery
+              </a>
+              <a 
+                href="#contact" 
+                className="m-2 px-6 py-4 bg-blue-600 text-white rounded-2xl text-center font-bold hover:bg-blue-700 transition-all active:scale-95"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Get Involved
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
       <main className="flex-grow">
@@ -245,11 +296,17 @@ export default function Home() {
               <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-xs">Contact</h4>
               <ul className="space-y-4 text-sm font-medium">
                 <li className="flex items-start gap-3">
-                  <span className="text-blue-400 italic">Address:</span>
+                  <span className="font-bold italic">Address:</span>
                   <span>259 Roxbury St, Roxbury, MA 02119</span>
                 </li>
-                <li>Email: rahma@rahmainclusivecenter.org</li>
-                <li>Phone: (617) 888-5514</li>
+                <li className="flex items-start gap-3">
+                  <span className="font-bold italic">Email:</span>
+                  <span>rahma@rahmainclusivecenter.org</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="font-bold italic">Phone:</span>
+                  <span>(617) 888-5514</span>
+                </li>
               </ul>
             </div>
           </div>
