@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Rahma Community Center | Special Needs & Inclusive Community Resource",
   description: "Empowering marginalized families, refugees, and individuals with disabilities through education, support, and community integration.",
+  icons: {
+    icon: "/Rahma Community/logo.png",
+    apple: "/Rahma Community/logo.png",
+  },
 };
 
 export default function RootLayout({

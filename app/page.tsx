@@ -1,10 +1,22 @@
 "use client";
 
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+   
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-out-cubic',
+    });
+  }, []);
 
   const programs = [
     {
@@ -49,7 +61,8 @@ export default function Home() {
     { src: "/Rahma Community/IMG_5925.jpg", alt: "Community outreach event" },
     { src: "/Rahma Community/IMG_5926.jpg", alt: "Special needs advocacy workshop" },
     { src: "/Rahma Community/IMG_5923.jpg", alt: "Inclusive community program" },
-    { src: "/Rahma Community/IMG_5924.jpg", alt: "Social skills development group" }
+    { src: "/Rahma Community/IMG_5924.jpg", alt: "Social skills development group" },
+    {src: "/Rahma Community/logo.png", alt: "Non profit logo" }
 ,
   ];
 
@@ -59,6 +72,13 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
+            <Image 
+              src="/Rahma Community/logo.png" 
+              alt="Non profit logo" 
+              width={40} 
+              height={40} 
+              className="w-8 h-8 md:w-10 md:h-10 object-contain"
+            />
             <span className="text-2xl font-bold tracking-tight text-blue-900">RAHMA</span>
             <span className="text-sm font-medium text-stone-500 uppercase tracking-widest hidden sm:block">Community Center</span>
           </div>
@@ -125,7 +145,7 @@ export default function Home() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative h-[85vh] flex items-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
+          <div data-aos="zoom-out" data-aos-duration="2000" className="absolute inset-0 z-0">
             <Image
               src="/Rahma Community/IMG_5918.jpg"
               alt="Rahma Community Center Hero"
@@ -136,17 +156,27 @@ export default function Home() {
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
             <div className="max-w-3xl space-y-8">
-              <span className="inline-block px-4 py-1.5 bg-amber-500/90 text-amber-950 text-xs font-bold uppercase tracking-widest rounded-full">
+              <div className="mb-6" data-aos="fade-down" data-aos-duration="1200">
+                <Image 
+                  src="/Rahma Community/logo.png" 
+                  alt="Rahma Community Center Logo" 
+                  width={120} 
+                  height={120} 
+                  className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl"
+                  priority
+                />
+              </div>
+              <span data-aos="fade-right" data-aos-delay="300" className="inline-block px-4 py-1.5 bg-amber-500/90 text-amber-950 text-xs font-bold uppercase tracking-widest rounded-full">
                 Special Needs & Inclusive Initiative
               </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight">
+              <h1 data-aos="fade-up" data-aos-delay="500" className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight">
                 Empowering Families, <br />
                 <span className="text-blue-400">Building Inclusion.</span>
               </h1>
-              <p className="text-lg md:text-xl text-stone-200 leading-relaxed max-w-2xl">
+              <p data-aos="fade-up" data-aos-delay="700" className="text-lg md:text-xl text-stone-200 leading-relaxed max-w-2xl">
                 We are committed to building a community where all individuals, regardless of ability or background, have the opportunity to thrive through culturally competent support and resources.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div data-aos="fade-up" data-aos-delay="900" className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a href="#programs" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-center transition-all shadow-lg shadow-blue-900/20 active:scale-95">
                   Explore Our Programs
                 </a>
@@ -159,10 +189,10 @@ export default function Home() {
         </section>
 
         {/* About/Statement of Need */}
-        <section id="about" className="py-24 bg-white">
+        <section id="about" className="py-24 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6">
+              <div className="space-y-6" data-aos="fade-right">
                 <h2 className="text-3xl md:text-4xl font-bold text-blue-900 leading-tight">
                   Bridging the Gap for Underserved Communities
                 </h2>
@@ -174,17 +204,17 @@ export default function Home() {
                   Located within Rahma Community Center, our program serves as a <strong>trusted community hub</strong> connecting families with the resources, services, and support networks necessary to improve their quality of life.
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-4">
-                  <div className="p-4 bg-stone-50 rounded-2xl border border-stone-100">
+                  <div className="p-4 bg-stone-50 rounded-2xl border border-stone-100" data-aos="zoom-in" data-aos-delay="200">
                     <span className="block text-3xl font-bold text-blue-600">200+</span>
                     <span className="text-sm font-medium text-stone-500">Families Served Annually</span>
                   </div>
-                  <div className="p-4 bg-stone-50 rounded-2xl border border-stone-100">
+                  <div className="p-4 bg-stone-50 rounded-2xl border border-stone-100" data-aos="zoom-in" data-aos-delay="400">
                     <span className="block text-3xl font-bold text-blue-600">Multi</span>
                     <span className="text-sm font-medium text-stone-500">lingual Support Services</span>
                   </div>
                 </div>
               </div>
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div data-aos="fade-left" className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
                 <Image
                   src="/Rahma Community/2.jpg"
                   alt="About Rahma Community"
@@ -197,9 +227,9 @@ export default function Home() {
         </section>
 
         {/* Programs Grid */}
-        <section id="programs" className="py-24 bg-stone-50">
+        <section id="programs" className="py-24 bg-stone-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4" data-aos="fade-up">
               <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Our Impact</span>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900">Programs Designed for You</h2>
               <p className="text-stone-500 text-lg">We provide a comprehensive range of services designed to empower individuals with special needs and their caregivers.</p>
@@ -207,7 +237,10 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {programs.map((program, idx) => (
-                <div key={idx} className="group p-8 bg-white rounded-3xl border border-stone-200 hover:border-blue-200 transition-all hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1">
+                <div key={idx} 
+                  data-aos="fade-up" 
+                  data-aos-delay={idx * 100}
+                  className="group p-8 bg-white rounded-3xl border border-stone-200 hover:border-blue-200 transition-all hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1">
                   <div className="w-14 h-14 bg-blue-50 text-3xl flex items-center justify-center rounded-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     {program.icon}
                   </div>
@@ -222,10 +255,13 @@ export default function Home() {
         {/* Community Gallery */}
         <section id="gallery" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-stone-900 mb-12">Our Community in Action</h2>
+            <h2 className="text-3xl font-bold text-stone-900 mb-12" data-aos="fade-up">Our Community in Action</h2>
             <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
               {galleryImages.map((img, idx) => (
-                <div key={idx} className="break-inside-avoid relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                <div key={idx} 
+                  data-aos="zoom-in" 
+                  data-aos-delay={(idx % 6) * 100}
+                  className="break-inside-avoid relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
                   <Image
                     src={img.src}
                     alt={img.alt}
@@ -242,7 +278,7 @@ export default function Home() {
         {/* CTA Section */}
         <section id="contact" className="py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative bg-blue-900 rounded-[3rem] overflow-hidden p-12 md:p-24 text-center text-white">
+            <div className="relative bg-blue-900 rounded-[3rem] overflow-hidden p-12 md:p-24 text-center text-white" data-aos="zoom-in-up">
               <div className="absolute inset-0 opacity-20">
                 <Image
                   src="/Rahma Community/2.jpg"
@@ -301,7 +337,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold italic">Email:</span>
-                  <span>rahma@rahmainclusivecenter.org</span>
+                  <span>rahma@rahmacc.org</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold italic">Phone:</span>
