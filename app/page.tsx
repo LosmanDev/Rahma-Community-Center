@@ -9,6 +9,18 @@ import Image from "next/image";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText("rahma@rahma-cc.org");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  };
    
   useEffect(() => {
     AOS.init({
@@ -52,13 +64,13 @@ export default function Home() {
   ];
 
   const galleryImages = [
-    { src: "/Rahma Community/1.jpg", alt: "Community members engaging in activities" },
+    { src: "/Rahma Community/1.png", alt: "Community members engaging in activities" },
     { src: "/Rahma Community/IMG_5918.jpg", alt: "Educational workshop session" },
     { src: "/Rahma Community/IMG_5919.jpg", alt: "Inclusive social event" },
     { src: "/Rahma Community/IMG_5920.jpg", alt: "Family support gathering" },
     { src: "/Rahma Community/IMG_5921.jpg", alt: "Community integration activity" },
     { src: "/Rahma Community/IMG_5922.jpg", alt: "Special needs support session" },
-    { src: "/Rahma Community/IMG_5925.jpg", alt: "Community outreach event" },
+    { src: "/Rahma Community/IMG_5925.png", alt: "Community outreach event" },
     { src: "/Rahma Community/IMG_5926.jpg", alt: "Special needs advocacy workshop" },
     { src: "/Rahma Community/IMG_5923.jpg", alt: "Inclusive community program" },
     { src: "/Rahma Community/IMG_5924.jpg", alt: "Social skills development group" },
@@ -86,7 +98,12 @@ export default function Home() {
             <a href="#about" className="text-sm font-medium hover:text-blue-600 transition-colors">About</a>
             <a href="#programs" className="text-sm font-medium hover:text-blue-600 transition-colors">Programs</a>
             <a href="#gallery" className="text-sm font-medium hover:text-blue-600 transition-colors">Gallery</a>
-            <a href="#contact" className="px-5 py-2.5 bg-blue-600 text-white rounded-full text-sm font-semibold hover:bg-blue-700 transition-shadow shadow-sm hover:shadow-md">Get Involved</a>
+            <button 
+              onClick={() => setIsContactModalOpen(true)}
+              className="px-5 py-2.5 bg-blue-600 text-white rounded-full text-sm font-semibold hover:bg-blue-700 transition-shadow shadow-sm hover:shadow-md"
+            >
+              Get Involved
+            </button>
           </nav>
           <button 
             className="md:hidden p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors"
@@ -130,13 +147,15 @@ export default function Home() {
               >
                 Gallery
               </a>
-              <a 
-                href="#contact" 
+              <button 
                 className="m-2 px-6 py-4 bg-blue-600 text-white rounded-2xl text-center font-bold hover:bg-blue-700 transition-all active:scale-95"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsContactModalOpen(true);
+                }}
               >
                 Get Involved
-              </a>
+              </button>
             </nav>
           </div>
         )}
@@ -201,7 +220,7 @@ export default function Home() {
                   Many families in marginalized communities face significant barriers in accessing disability services, including language barriers, lack of awareness, and financial constraints.
                 </p>
                 <p className="text-lg text-stone-600 leading-relaxed">
-                  Located within Rahma Community Center, our program serves as a <strong>trusted community hub</strong> connecting families with the resources, services, and support networks necessary to improve their quality of life.
+                 Located in Roxbury, Rahma Community Center’s program serves as a <strong>trusted community hub</strong> connecting families with the resources, services, and support networks necessary to improve their quality of life.
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-4">
                   <div className="p-4 bg-stone-50 rounded-2xl border border-stone-100" data-aos="zoom-in" data-aos-delay="200">
@@ -293,11 +312,17 @@ export default function Home() {
                   Whether you are seeking support or looking to contribute, we welcome you to join our inclusive community.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="px-10 py-5 bg-amber-500 hover:bg-amber-600 text-amber-950 font-black rounded-2xl transition-all shadow-xl shadow-amber-950/20">
+                  <button 
+                    onClick={() => setIsContactModalOpen(true)}
+                    className="px-10 py-5 bg-amber-500 hover:bg-amber-600 text-amber-950 font-black rounded-2xl transition-all shadow-xl shadow-amber-950/20 text-center"
+                  >
                     Get Support Now
                   </button>
-                  <button className="px-10 py-5 bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md font-bold rounded-2xl transition-all">
-                    Partner With Us
+                  <button 
+                    onClick={() => setIsContactModalOpen(true)}
+                    className="px-10 py-5 bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md font-bold rounded-2xl transition-all text-center"
+                  >
+                    Volunteer With Us
                   </button>
                 </div>
               </div>
@@ -337,7 +362,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold italic">Email:</span>
-                  <span>rahma@rahmacc.org</span>
+                  <a href="mailto:rahma@rahma-cc.org" className="hover:text-blue-400 transition-colors">rahma@rahma-cc.org</a>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold italic">Phone:</span>
@@ -348,10 +373,70 @@ export default function Home() {
           </div>
           <div className="pt-12 border-t border-stone-800 flex flex-col md:row justify-between items-center gap-6 text-xs uppercase tracking-widest font-bold">
             <p>&copy; {new Date().getFullYear()} Rahma Community Center.</p>
-            <p className="tex-center">All rights reserved.</p>
+            <p className="text-center">All rights reserved.</p>
           </div>
         </div>
       </footer>
+
+      {/* Contact Modal */}
+      {isContactModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div 
+            className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-8 space-y-6">
+              <div className="flex justify-between items-center">
+                <h3 className="text-2xl font-bold text-blue-900">Contact Us</h3>
+                <button 
+                  onClick={() => setIsContactModalOpen(false)}
+                  className="p-2 hover:bg-stone-100 rounded-full transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-stone-500">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div className="p-4 bg-blue-50 rounded-2xl space-y-2">
+                  <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Email Address</p>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-lg font-medium text-stone-800 break-all">rahma@rahma-cc.org</span>
+                    <button 
+                      onClick={copyToClipboard}
+                      className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
+                        copied 
+                        ? "bg-green-500 text-white" 
+                        : "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                      }`}
+                    >
+                      {copied ? "Copied!" : "Copy"}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-stone-50 rounded-2xl space-y-2">
+                  <p className="text-xs font-bold text-stone-500 uppercase tracking-wider">Phone Number</p>
+                  <p className="text-lg font-medium text-stone-800">(617) 888-5514</p>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <a 
+                  href="mailto:rahma@rahma-cc.org"
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-200 active:scale-[0.98]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                  Send Email Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
