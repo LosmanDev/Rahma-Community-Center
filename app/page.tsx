@@ -1,5 +1,5 @@
 "use client";
-
+import { Analytics } from "@vercel/analytics/next"
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -79,6 +79,7 @@ export default function Home() {
   ];
 
   return (
+    <>
     <div className="flex flex-col min-h-screen bg-stone-50 text-stone-900 font-sans selection:bg-amber-200 selection:text-stone-900">
       {/* Header/Navbar */}
       <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-stone-200">
@@ -438,5 +439,7 @@ export default function Home() {
         </div>
       )}
     </div>
+    <Analytics />
+    </>
   );
 }
